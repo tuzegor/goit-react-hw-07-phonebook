@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import ContactForm from './components/ContactForm/ContactForm';
+import Filter from './components/Filter/Filter';
+import ContactList from './components/ContactList/ContactList';
 
-function App() {
+import { useSelector } from 'react-redux';
+
+export default function App() {
+  const contacts = useSelector(state => state.contacts.items);
+
+  useEffect(() => {
+    localStorage.setItem('contactsStorage', JSON.stringify(contacts));
+  }, [contacts]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Phonebook</h1>
+      <ContactForm />
+      <h2 className="title">Contacts</h2>
+      <Filter />
+      <ContactList />
     </div>
   );
 }
-
-export default App;
