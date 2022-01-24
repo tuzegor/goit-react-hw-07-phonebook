@@ -1,19 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { itemsReducer } from './contacts/items-slice';
+// import { itemsReducer } from './contacts/items-slice';
 import { filterReducer } from './contacts/filter-slice';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { contactsApi } from './contacts/contactsApi';
 
-const rootReducer = combineReducers({
-  items: itemsReducer,
-  filter: filterReducer,
-});
+// const rootReducer = combineReducers({
+//   items: itemsReducer,
+//   filter: filterReducer,
+// });
 
 export const store = configureStore({
   reducer: {
-    contacts: rootReducer,
+    filter: filterReducer,
 
     [contactsApi.reducerPath]: contactsApi.reducer,
   },

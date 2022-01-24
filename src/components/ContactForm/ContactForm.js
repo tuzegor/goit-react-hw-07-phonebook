@@ -2,36 +2,36 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import style from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../store/contacts/items-slice';
+// import { addContact } from '../../store/contacts/items-slice';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts.items);
+  // const dispatch = useDispatch();
+  // const contacts = useSelector(state => state.contacts.items);
 
-  const formSubmit = event => {
-    event.preventDefault();
-    const contact = { id: nanoid(), name, number };
+  // const formSubmit = event => {
+  //   event.preventDefault();
+  //   const contact = { id: nanoid(), name, number };
 
-    if (
-      contacts.find(
-        сontactItem =>
-          сontactItem.name.toLowerCase() === contact.name.toLowerCase(),
-      )
-    ) {
-      alert('Such contact exists');
-    } else {
-      dispatch(addContact(contact));
-    }
+  //   if (
+  //     contacts.find(
+  //       сontactItem =>
+  //         сontactItem.name.toLowerCase() === contact.name.toLowerCase(),
+  //     )
+  //   ) {
+  //     alert('Such contact exists');
+  //   } else {
+  //     dispatch(addContact(contact));
+  //   }
 
-    setName('');
-    setNumber('');
-  };
+  //   setName('');
+  //   setNumber('');
+  // };
 
   return (
-    <form className={style.contactForm} onSubmit={formSubmit}>
+    <form className={style.contactForm}>
       <div className={style.inputWrapper}>
         <label className={style.nameTitle}>
           <span>Name</span>

@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ContactForm from './components/ContactForm/ContactForm';
 import Filter from './components/Filter/Filter';
 import ContactList from './components/ContactList/ContactList';
 
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts.items);
+  // const contacts = useSelector(state => state.contacts.items);
 
-  useEffect(() => {
-    localStorage.setItem('contactsStorage', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contactsStorage', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <div className="App">

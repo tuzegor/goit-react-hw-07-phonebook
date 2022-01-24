@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(state => state.filter);
 
   return (
     <div className={style.filter}>
