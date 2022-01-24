@@ -3,6 +3,8 @@ import style from './ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeContact } from '../../store/contacts/items-slice';
 
+import { useFetchContactsQuery } from '../../store/contacts/contactsApi';
+
 export default function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
@@ -13,6 +15,8 @@ export default function ContactList() {
       contact.name.toLowerCase().includes(filter.toLowerCase()),
     );
   };
+
+  console.log(useFetchContactsQuery());
 
   return (
     <ul className={style.contactsList}>
