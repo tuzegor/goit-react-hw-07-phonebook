@@ -7,7 +7,7 @@ import { useDeleteContactMutation } from '../../store/contacts/contactsApi';
 export default function ContactList({ contacts }) {
   const filter = useSelector(state => state.filter);
 
-  const [deleteContact] = useDeleteContactMutation();
+  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   const showFilteredContacts = () => {
     return contacts.filter(contact =>
@@ -27,8 +27,9 @@ export default function ContactList({ contacts }) {
               className={style.deleteBtn}
               type="button"
               onClick={() => deleteContact(id)}
+              disabled={isDeleting}
             >
-              Delete
+              {isDeleting ? 'Deleting' : 'Delete'}
             </button>
           </li>
         ))}

@@ -7,7 +7,8 @@ export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const [updateContacts] = useUpdateContactsMutation();
+  const [updateContacts, { isLoading: isUpdating }] =
+    useUpdateContactsMutation();
 
   const formSubmit = event => {
     event.preventDefault();
@@ -60,8 +61,8 @@ export default function ContactForm({ contacts }) {
           />
         </label>
       </div>
-      <button className={style.submitBtn} type="submit">
-        Add contact
+      <button className={style.submitBtn} type="submit" disabled={isUpdating}>
+        {isUpdating ? 'Loading' : 'Add contact'}
       </button>
     </form>
   );
