@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './ContactList.module.css';
 import { useSelector } from 'react-redux';
-import { useDeleteContactMutation } from '../../store/contacts/contactsApi';
+
+import ContactListItem from "../ContactListItem/ContactListItem"
 
 export default function ContactList({ contacts }) {
   const filter = useSelector(state => state.filter);
 
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   const showFilteredContacts = () => {
     return contacts.filter(contact =>
@@ -18,20 +18,8 @@ export default function ContactList({ contacts }) {
   return (
     <ul className={style.contactsList}>
       {contacts &&
-        showFilteredContacts().map(({ id, name, phone }) => (
-          <li className={style.item} key={id}>
-            <span>
-              {name}: {phone}
-            </span>
-            <button
-              className={style.deleteBtn}
-              type="button"
-              onClick={() => deleteContact(id)}
-              disabled={isDeleting}
-            >
-              {isDeleting ? 'Deleting' : 'Delete'}
-            </button>
-          </li>
+        showFilteredContacts().map((contact) => (
+          <ContactListItem contact={contact}  key={contact.id}></ContactListItem>
         ))}
     </ul>
   );
