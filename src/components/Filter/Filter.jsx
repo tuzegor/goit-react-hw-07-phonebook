@@ -1,5 +1,4 @@
 import React from 'react';
-
 import style from './Filter.module.css';
 import { changeFilter } from '../../store/contacts/filter-slice';
 import { useDispatch, useSelector } from 'react-redux';
