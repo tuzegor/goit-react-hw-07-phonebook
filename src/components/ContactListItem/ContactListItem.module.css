@@ -8,6 +8,7 @@
   margin-bottom: 10px;
 }
 .deleteBtn {
+  width: 90px;
   display: inline-block;
   font-size: 18px;
   color: #e5d5bc;

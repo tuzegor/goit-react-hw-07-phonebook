@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import style from './ContactForm.module.css';
 import { useUpdateContactsMutation } from '../../store/contacts/contactsApi';
-
+import Loader from '../Loader/Loader'
 export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -62,7 +62,7 @@ export default function ContactForm({ contacts }) {
         </label>
       </div>
       <button className={style.submitBtn} type="submit" disabled={isUpdating}>
-        {isUpdating ? 'Loading' : 'Add contact'}
+        {isUpdating ? <Loader/> : 'Add contact'}
       </button>
     </form>
   );

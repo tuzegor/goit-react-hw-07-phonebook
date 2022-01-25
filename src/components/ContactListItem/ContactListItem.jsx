@@ -1,6 +1,7 @@
 import React from "react";
 import style from './ContactListItem.module.css';
 import { useDeleteContactMutation } from '../../store/contacts/contactsApi';
+import Loader from '../Loader/Loader'
 
 export default function ContactListItem({contact}) {
 const {id, name, phone} = contact;
@@ -17,7 +18,7 @@ const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
               onClick={() => deleteContact(id)}
               disabled={isDeleting}
             >
-              {isDeleting ? 'Deleting' : 'Delete'}
+              {isDeleting ? <Loader/> : 'Delete'}
             </button>
           </li>
     )
