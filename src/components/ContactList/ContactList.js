@@ -1,15 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import style from './ContactList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  useFetchContactsQuery,
-  useDeleteContactMutation,
-} from '../../store/contacts/contactsApi';
+import { useSelector } from 'react-redux';
+import { useDeleteContactMutation } from '../../store/contacts/contactsApi';
 
-export default function ContactList() {
+export default function ContactList({ contacts }) {
   const filter = useSelector(state => state.filter);
-  const { data: contacts } = useFetchContactsQuery();
-  console.log(contacts);
 
   const [deleteContact] = useDeleteContactMutation();
 
@@ -39,3 +35,7 @@ export default function ContactList() {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.array,
+};
